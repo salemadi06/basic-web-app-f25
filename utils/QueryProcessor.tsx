@@ -40,7 +40,15 @@ export default function QueryProcessor(query: string): string {
     return Math.pow(root, 6) === n;
   });
   return results.join(", ");
-}
+  }
+
+  if (query.includes("times") || query.includes("multiplied by")) {
+    const nums = query.match(/\d+/g);
+    if (!nums || nums.length < 2) return "";
+    return String(Number(nums[0]) * Number(nums[1]));
+  }
+
+
 
   return "";
 }
