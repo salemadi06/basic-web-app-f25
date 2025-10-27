@@ -16,12 +16,11 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.includes("largest")) {
-    // Grab integers (supports negatives too). Example: "68, 82, 39?"
     const matches = query.match(/-?\d+/g);
     if (!matches) return "";
     const numbers = matches.map(Number);
     const largest = Math.max(...numbers);
-    return String(largest); // return type is string
+    return String(largest);
   }
 
   if (query.includes("plus")) {
@@ -48,7 +47,11 @@ export default function QueryProcessor(query: string): string {
     return String(Number(nums[0]) * Number(nums[1]));
   }
 
-
+  if (query.includes("minus")) {
+    const nums = query.match(/\d+/g);
+    if (!nums || nums.length < 2) return "";
+    return String(Number(nums[0]) - Number(nums[1]));
+  }
 
   return "";
 }
