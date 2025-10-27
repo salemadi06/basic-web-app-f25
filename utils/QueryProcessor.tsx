@@ -71,5 +71,14 @@ export default function QueryProcessor(query: string): string {
     return primes.join(", ");
   }
 
+  if (query.includes("to the power of")) {
+    const nums = query.match(/\d+/g);
+    if (!nums || nums.length < 2) return "";
+    const base = Number(nums[0]);
+    const exponent = Number(nums[1]);
+    const result = Math.pow(base, exponent);
+    return String(result);
+  }
+
   return "";
 }
