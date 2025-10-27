@@ -24,5 +24,12 @@ export default function QueryProcessor(query: string): string {
     return String(largest); // return type is string
   }
 
+  if (query.includes("plus")) {
+    const nums = query.match(/\d+/g);
+    if (!nums || nums.length < 2) return "";
+    const result = Number(nums[0]) + Number(nums[1]);
+    return String(result);
+  }
+
   return "";
 }
