@@ -53,5 +53,21 @@ export default function QueryProcessor(query: string): string {
     return String(Number(nums[0]) - Number(nums[1]));
   }
 
+  if (query.includes("prime")) {
+    const matches = query.match(/\d+/g);
+    if (!matches) return "";
+    const numbers = matches.map(Number);
+
+    const primes = numbers.filter(n => {
+      if (n < 2) return false;
+      for (let i = 2; i * i <= n; i++) {
+        if (n % i === 0) return false;
+      }
+    return true;
+  });
+
+  return primes.join(", ");
+}
+
   return "";
 }
