@@ -53,12 +53,12 @@ export default function QueryProcessor(query: string): string {
     return String(largest);
   }
 
-  if (query.includes("plus")) {
-    const nums = query.match(/\d+/g);
-    if (!nums || nums.length < 2) return "";
-    const result = nums.map(Number).reduce((a, b) => a + b, 0);
-    return String(result);
-  }
+  // if (query.includes("plus")) {
+  //   const nums = query.match(/\d+/g);
+  //   if (!nums || nums.length < 2) return "";
+  //   const result = nums.map(Number).reduce((a, b) => a + b, 0);
+  //   return String(result);
+  // }
 
   if (query.includes("both a square and a cube")) {
   const matches = query.match(/\d+/g);
@@ -71,17 +71,17 @@ export default function QueryProcessor(query: string): string {
   return results.join(", ");
   }
 
-  if (query.includes("times") || query.includes("multiplied by")) {
-    const nums = query.match(/\d+/g);
-    if (!nums || nums.length < 2) return "";
-    return String(Number(nums[0]) * Number(nums[1]));
-  }
+  // if (query.includes("times") || query.includes("multiplied by")) {
+  //   const nums = query.match(/\d+/g);
+  //   if (!nums || nums.length < 2) return "";
+  //   return String(Number(nums[0]) * Number(nums[1]));
+  // }
 
-  if (query.includes("minus")) {
-    const nums = query.match(/\d+/g);
-    if (!nums || nums.length < 2) return "";
-    return String(Number(nums[0]) - Number(nums[1]));
-  }
+  // if (query.includes("minus")) {
+  //   const nums = query.match(/\d+/g);
+  //   if (!nums || nums.length < 2) return "";
+  //   return String(Number(nums[0]) - Number(nums[1]));
+  // }
 
   if (query.includes("prime")) {
     const matches = query.match(/\d+/g);
@@ -101,14 +101,14 @@ export default function QueryProcessor(query: string): string {
     return primes.join(", ");
   }
 
-  if (query.includes("to the power of")) {
-    const nums = query.match(/\d+/g);
-    if (!nums || nums.length < 2) return "";
-    const base = Number(nums[0]);
-    const exponent = Number(nums[1]);
-    const result = Math.pow(base, exponent);
-    return String(result);
-  }
+  // if (query.includes("to the power of")) {
+  //   const nums = query.match(/\d+/g);
+  //   if (!nums || nums.length < 2) return "";
+  //   const base = Number(nums[0]);
+  //   const exponent = Number(nums[1]);
+  //   const result = Math.pow(base, exponent);
+  //   return String(result);
+  // }
 
   if (query.includes("scrabble score")) {
     const wordMatch = query.match(/[a-zA-Z]+/g);
