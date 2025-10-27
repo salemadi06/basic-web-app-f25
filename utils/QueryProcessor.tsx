@@ -25,15 +25,15 @@ export default function QueryProcessor(query: string): string {
 ) {
   // Replace English words with math symbols
   let expression = query
+    .toLowerCase()
     .replace(/what is /g, "")
-    .replace(/by /g, "")
+    .replace(/\?/g, "")
+    .replace(/to the power of/g, "**")
+    .replace(/multiplied by/g, "*")
+    .replace(/divided by/g, "/")
+    .replace(/times/g, "*")
     .replace(/plus/g, "+")
     .replace(/minus/g, "-")
-    .replace(/multiplied/g, "*")
-    .replace(/times/g, "*")
-    .replace(/divided/g, "/")
-    .replace(/to the power of/g, "**")
-    .replace(/\?/g, "")
     .trim();
 
   try {
