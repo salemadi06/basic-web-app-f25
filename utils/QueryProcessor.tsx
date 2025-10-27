@@ -15,5 +15,14 @@ export default function QueryProcessor(query: string): string {
     return "shaikhae";
   }
 
+  if (query.includes("largest")) {
+    // Grab integers (supports negatives too). Example: "68, 82, 39?"
+    const matches = query.match(/-?\d+/g);
+    if (!matches) return "";
+    const numbers = matches.map(Number);
+    const largest = Math.max(...numbers);
+    return String(largest); // return type is string
+  }
+
   return "";
 }
