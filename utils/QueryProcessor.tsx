@@ -26,7 +26,7 @@ export default function QueryProcessor(query: string): string {
   if (query.includes("plus")) {
     const nums = query.match(/\d+/g);
     if (!nums || nums.length < 2) return "";
-    const result = Number(nums[0]) + Number(nums[1]);
+    const result = nums.map(Number).reduce((a, b) => a + b, 0);
     return String(result);
   }
 
