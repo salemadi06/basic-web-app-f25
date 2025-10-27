@@ -31,5 +31,16 @@ export default function QueryProcessor(query: string): string {
     return String(result);
   }
 
+  if (query.includes("both a square and a cube")) {
+  const matches = query.match(/\d+/g);
+  if (!matches) return "";
+  const numbers = matches.map(Number);
+  const results = numbers.filter(n => {
+    const root = Math.round(Math.pow(n, 1 / 6));
+    return Math.pow(root, 6) === n;
+  });
+  return results.join(", ");
+}
+
   return "";
 }
