@@ -15,6 +15,36 @@ export default function QueryProcessor(query: string): string {
     return "shaikhae";
   }
 
+  if (
+  query.includes("plus") ||
+  query.includes("minus") ||
+  query.includes("times") ||
+  query.includes("multiplied") ||
+  query.includes("divided") ||
+  query.includes("power")
+) {
+  // Replace English words with math symbols
+  let expression = query
+    .replace(/what is /g, "")
+    .replace(/by /g, "")
+    .replace(/plus/g, "+")
+    .replace(/minus/g, "-")
+    .replace(/multiplied/g, "*")
+    .replace(/times/g, "*")
+    .replace(/divided/g, "/")
+    .replace(/to the power of/g, "**")
+    .replace(/\?/g, "")
+    .trim();
+
+  try {
+    // Safely evaluate the arithmetic expression
+    const result = Function(`"use strict"; return (${expression});`)();
+    return String(result);
+  } catch {
+    return "";
+  }
+}
+
   if (query.includes("largest")) {
     const matches = query.match(/-?\d+/g);
     if (!matches) return "";
